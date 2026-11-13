@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9edec">
+  <meta name="description" content="Фокус. Личный список дел: добавляй задачи, отмечай выполненное и двигайся в своём темпе.">
+  <title>Фокус — дела по порядку</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 5L20 6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  </svg>
+  <a href="#task-input" class="skip-link">Перейти к добавлению задачи</a>
+
+  <div class="workspace">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Фокус — главная">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+        фокус
+      </a>
+      <span class="edition">ЛИЧНЫЙ СПИСОК ДЕЛ</span>
+      <time id="today" class="date"></time>
+    </header>
+
+    <main>
+      <header class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow"><span aria-hidden="true"></span> ПО ОДНОМУ ДЕЛУ ЗА РАЗ</p>
+          <h1>Дела <em>по порядку.</em></h1>
+          <p class="subtitle">Из головы — на лист. Дальше разберёмся.</p>
+        </div>
+        <div class="hand-note" aria-hidden="true">
+          <span>записать.<br>сделать.<br><i>выдохнуть.</i></span>
+          <svg viewBox="0 0 110 45"><path d="M7 12C36 2 76 6 95 26m-16-2 18 5-4-17"/></svg>
+        </div>
+      </header>
+
+      <section class="sheet" aria-label="Список задач">
+        <div class="sheet-tab">МОЙ СПИСОК</div>
+        <div class="binding" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+        <div class="sheet-content">
+          <section class="progress-summary" aria-label="Прогресс выполнения">
+            <div class="progress-label"><span class="status-dot" aria-hidden="true"></span><h2 id="progress-title">Чистый лист</h2></div>
+            <div class="progress-meta"><span class="progress-ratio"><strong id="done-number">0</strong><span id="total-number"> / 0</span><span class="ratio-caption"> готово</span></span><span id="progress-percent">0%</span></div>
+            <div class="progress-track" role="progressbar" aria-label="Выполненные задачи" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
+            <p id="progress-description" class="sr-only">Добавь первое дело в список.</p>
+          </section>
+
+          <form id="task-form" class="task-form" aria-busy="true" novalidate>
+            <label for="task-input">Следующее дело</label>
+            <div class="input-row">
+              <input id="task-input" name="task" type="text" maxlength="200" placeholder="Что хочешь сделать?" autocomplete="off" aria-describedby="input-hint input-error" required disabled>
+              <button type="submit" class="add-button" disabled><span>Добавить</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+            <div class="input-meta"><span id="input-hint"><kbd>Enter ↵</kbd> чтобы добавить</span><span id="character-count">0 / 200</span></div>
+            <p id="input-error" class="input-error" role="alert" hidden></p>
+          </form>
+
+          <div class="list-toolbar">
+            <nav class="filters" aria-label="Фильтр задач">
+              <button type="button" class="filter selected" data-filter="all" aria-pressed="true">Все<span class="badge" id="count-all">0</span></button>
+              <button type="button" class="filter" data-filter="active" aria-pressed="false">В работе<span class="badge" id="count-active">0</span></button>
+              <button type="button" class="filter" data-filter="completed" aria-pressed="false">Готово<span class="badge" id="count-completed">0</span></button>
+            </nav>
+            <span id="list-count" class="list-count">0 задач</span>
+          </div>
+          <h2 id="list-heading" class="sr-only">Все задачи</h2>
+          <ul id="task-list" class="task-list" aria-labelledby="list-heading"></ul>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-mark" aria-hidden="true">
+              <svg viewBox="0 0 90 80"><path class="empty-outline" d="M70 14C44-5 8 11 10 42c2 31 36 39 58 20 17-15 13-39-3-49"/><path class="empty-tick" d="m26 38 12 13 30-32"/></svg>
+              <span>начни здесь</span>
+            </div>
+            <h3 id="empty-title">Пока чистый лист.</h3>
+            <p id="empty-description">Запиши первое дело в поле выше.<br>Даже маленькое считается.</p>
+          </div>
+
+          <footer class="list-footer">
+            <span id="remaining">Ни одного незавершённого дела</span>
+            <span class="save-state" id="save-state"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span id="save-text">Сохранено в браузере</span></span>
+          </footer>
+        </div>
+        <div class="sheet-edge" aria-hidden="true"></div>
+      </section>
+
+      <p class="storage-warning" id="storage-warning" role="alert" hidden></p>
+      <footer class="page-footer"><span>Твой список останется здесь, когда вернёшься.</span><span>Без регистрации <span aria-hidden="true">↗</span></span></footer>
+      <noscript><p class="storage-warning">Для работы списка задач включи JavaScript в настройках браузера.</p></noscript>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" hidden><span id="toast-message" role="status"></span><button id="undo-button" type="button" hidden>Вернуть</button><button id="close-toast" class="toast-close" type="button" aria-label="Закрыть уведомление">×</button></div>
+  <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

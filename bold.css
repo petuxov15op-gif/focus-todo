@@ -1,0 +1,77 @@
+/* Theme source: MagicPath Brutalism, theme 7000. Native system fonts keep it offline. */
+.bold {
+  --desk: #f3f1e9;
+  --paper: #fff;
+  --ink: #181918;
+  --muted: #5e6058;
+  --line: #222;
+  --accent: oklch(0.6489 0.2370 26.9728);
+  --accent-dark: #c92f2f;
+  --accent-pale: #ffe8dc;
+  --yellow: oklch(0.9680 0.2110 109.7692);
+  background-image: none;
+}
+.bold .workspace { max-width: 900px; }
+.bold .topbar { border-bottom: 2px solid var(--ink); min-height: 90px; }
+.bold .brand { font-weight: 900; }
+.bold .brand-mark { background: var(--yellow); border-color: var(--ink); border-radius: 0; color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+.bold .intro { padding: 38px 0 58px; align-items: flex-end; }
+.bold h1 { font-size: clamp(62px, 8vw, 100px); font-weight: 950; text-transform: uppercase; line-height: .98; letter-spacing: -7px; }
+.bold .title-dot { color: var(--accent); }
+.bold .eyebrow { color: var(--ink); font-size: 10px; }
+.bold .eyebrow > span { width: 8px; height: 8px; border-radius: 0; }
+.bold .subtitle { font-size: 13px; margin-top: 22px; }
+.bold-sticker { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 128px; height: 128px; background: var(--yellow); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); transform: rotate(7deg); margin-right: 10px; flex-shrink: 0; }
+.bold-sticker strong { font-size: 48px; font-weight: 850; line-height: 1.1; letter-spacing: -4px; }
+.bold-sticker > span { font: 9px var(--mono); letter-spacing: 1px; margin-top: 9px; }
+.bold .sheet { border: 2px solid var(--ink); box-shadow: 9px 9px 0 var(--ink); border-radius: 0; }
+.bold .sheet-tab { background: var(--yellow); color: var(--ink); font-weight: 700; border: 2px solid var(--ink); border-bottom: 0; height: 33px; top: -32px; left: -2px; transform: none; border-radius: 0; padding: 0 25px; }
+.bold .binding { display: none; }
+.bold .sheet-content { padding: 0 33px; }
+.bold .progress-summary { padding-top: 29px; padding-bottom: 27px; }
+.bold .progress-label h2 { color: var(--ink); font-weight: 600; }
+.bold .progress-track { height: 6px; border: 1px solid var(--ink); background: #eee; }
+.bold #progress-fill { background: var(--yellow); }
+.bold .input-row { border: 2px solid var(--ink); border-radius: 0; padding: 0; gap: 0; background: #fff; }
+.bold .input-row input { padding: 16px; }
+.bold .add-button { background: var(--accent); color: var(--ink); border-left: 2px solid var(--ink); border-radius: 0; min-height: 58px; font-weight: 750; }
+.bold .add-button:hover { background: var(--yellow); }
+.bold .filters { gap: 5px; padding-bottom: 13px; }
+.bold .filter { min-height: 44px; padding: 0 13px; margin: 0; border: 1px solid transparent; color: var(--ink); }
+.bold .filter.selected { border-color: var(--ink); background: var(--yellow); font-weight: 700; box-shadow: 2px 2px 0 var(--ink); }
+.bold .filter.selected .badge { background: transparent; color: var(--ink); }
+.bold .badge { background: #eee; }
+.bold .list-toolbar { border-bottom-width: 2px; }
+.bold .task-row { min-height: 79px; border-bottom-color: #c9c9bf; }
+.bold .task-checkbox { border: 1.5px solid var(--ink); border-radius: 0; background: #fff; }
+.bold .task-row.completed .task-checkbox { background: var(--yellow); border-color: var(--ink); }
+.bold .task-row.completed .task-checkbox::after { border-color: var(--ink); }
+.bold .task-row.completed .task-text { color: #65675e; }
+.bold .task-label { font-size: 16px; font-weight: 500; }
+.bold .delete-button { border-radius: 0; color: var(--ink); }
+.bold .list-footer { padding-top: 23px; padding-bottom: 24px; }
+.bold .page-footer { padding-top: 28px; }
+@media (max-width: 600px) {
+  .bold .intro { position: relative; display: block; padding: 30px 0 54px; }
+  .bold h1 { font-size: 53px; letter-spacing: -3px; }
+  .bold-sticker { position: absolute; right: 10px; bottom: 14px; width: 78px; height: 78px; box-shadow: 3px 3px 0 var(--ink); margin: 0; }
+  .bold-sticker strong { font-size: 29px; letter-spacing: -2px; }
+  .bold-sticker > span { font-size: 6px; letter-spacing: .3px; margin-top: 4px; }
+  .bold .eyebrow { font-size: 7px; letter-spacing: .4px; }
+  .bold .subtitle { max-width: 190px; font-size: 10px; margin-top: 15px; }
+  .bold .sheet-content { padding: 0 17px; }
+  .bold .filters { gap: 5px; }
+  .bold .filter { padding: 0 8px; font-size: 10px; }
+  .bold .add-button { min-height: 54px; }
+  .bold .input-row input { padding: 12px 10px; }
+  .bold .task-label { font-size: 14px; }
+  .bold .sheet { box-shadow: 5px 5px 0 var(--ink); }
+}
+@media (max-width: 360px) {
+  .bold h1 { font-size: 48px; }
+  .bold-sticker { width: 64px; height: 64px; }
+  .bold-sticker strong { font-size: 25px; }
+  .bold .subtitle { max-width: 180px; }
+}
+
+body.bold { min-height: 100dvh; color: var(--ink); background-color: var(--desk); }
